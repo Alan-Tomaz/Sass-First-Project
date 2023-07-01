@@ -1,0 +1,85 @@
+/* Imports */
+@import 'partial';
+
+/* Variables */
+$bg-color1: rgba(0, 100, 100, 0.2);
+
+/* Mixins */
+@mixin box-shadow($x, $y, $blur, $c) {
+    -webkit-box-shadow: $x $y $blur $c;
+    -moz-box-shadow: $x $y $blur $c;
+    -ms-box-shadow: $x $y $blur $c;
+    box-shadow: $x $y $blur $c;
+}
+
+@mixin text-effect($val) {
+    @if $val==danger {
+        color: red;
+    }
+
+    @else if $val==alert {
+        color: yellow;
+    }
+
+    @else if $val==success {
+        color: green;
+    }
+
+    @else {
+        color: black;
+    }
+}
+
+/* General Style */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    border: none;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: $bg-color1;
+
+    .container {
+        max-width: 1200px;
+        width: 50vw;
+        height: 50vh;
+        background-color: rgba(0, 100, 100, 0.5);
+        @include box-shadow(.5rem, .5rem, .1rem, rgba(0, 0, 0, 0.5));
+
+
+        @for $i from 1 through 4 {
+            .div-#{$i} {
+                text-shadow: 1px 2px rgba(0, 0, 0, 5);
+            }
+        }
+
+        .div-1 {
+            @include text-effect(danger);
+        }
+
+        .div-2 {
+            @include text-effect(alert);
+        }
+
+        .div-3 {
+            @include text-effect(a);
+        }
+    }
+}
+
+.box {
+    display: flex;
+    justify-content: space-evenly;
+
+    .square {
+        width: 50px;
+        height: 50px;
+    }
+}

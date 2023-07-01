@@ -1,0 +1,9 @@
+/* List */
+$colors: (color1: blue, color2: red, color3: green);
+
+@each $key,
+$color in $colors {
+    .#{$color}-color {
+        background-color: $color;
+    }
+}
